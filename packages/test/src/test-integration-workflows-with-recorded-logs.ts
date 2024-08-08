@@ -10,6 +10,15 @@ const recordedLogs: { [workflowId: string]: LogEntry[] } = {};
 const test = makeTestFunction({
   workflowsPath: __filename,
   recordedLogs,
+  workflowEnvironmentOpts: {
+    server: {
+      executable: {
+        type: 'existing-path',
+        path: '/Users/dan/src/temporalio/cli/temporal',
+      },
+      ui: true,
+    },
+  },
 });
 
 export const unfinishedHandlersUpdate = workflow.defineUpdate<void>('unfinished-handlers-update');
